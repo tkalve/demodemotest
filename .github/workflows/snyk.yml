@@ -1,5 +1,10 @@
 name: Snyk code
-on: push
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
   dotnet:
     runs-on: ubuntu-latest
@@ -15,9 +20,12 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   node:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
+        with:
+          working_directory: ./ClientApp
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
