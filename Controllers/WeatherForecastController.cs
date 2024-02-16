@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Vite_CSharp.Controllers;
+namespace DemoDemo.Controllers;
 
 [ApiController]
 [Route("[controller]")]
